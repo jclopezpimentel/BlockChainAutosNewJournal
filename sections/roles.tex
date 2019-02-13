@@ -1,0 +1,63 @@
+\subsection{Roles}
+
+According to the permissions the users will have five defined roles: 
+\textbf{U}ser,
+\textbf{D}ealership,
+\textbf{O}wner,
+\textbf{G}overnment, and
+\textbf{H}elper.
+Each user could hold one or more roles.
+Table \ref{table:operations} pinpoints the type of operations that each role can do and the explanation
+is as follows: 
+\begin{itemize}
+    \item Any \textbf{U}ser will have enough permissions to interact with the system in order to 
+        obtain information on the vehicle (Section~\ref{sec:getServices}). This role is also able 
+        to buy cars, but it must be authenticated. 
+        These permissions will be granted to the user once he has established the secure channel. 
+    \item The \textbf{D}ealership is able to manufacture vehicles because of that he is who creates the 
+        genesis block.
+    \item Every car will have one and only one \textbf{O}wner at a given time. The owner will be the only one 
+        that has permission to trade ownership, but also to request to the government to change legal
+        status. In addition, he can request and authorize to \textbf{H}elper to add some information 
+        about a car.
+    \item \textbf{G}overnment will have the ability to  \textit{change legal status} when the 
+        vehicle is involved in legal situations. For that, it will be necessary to establish 
+        different status: \textit{stolen}, \textit{arrested}, \textit{penalty}, \textit{registered owner}, \textit{plate}, 
+        \textit{tax history}, etc.
+    \item The \textbf{H}elper role is who receives a temporal permission from the \textbf{O}wner to set one 
+        transaction on the block-chain. The time frame for the temporal permission will be authorized by 
+        the \textbf{O}wner of the car. The car owner will set a special transaction to give the helper 
+        the permission. The helper role will be used for transactions that change one or more data of the 
+        car's properties. This will include official services, mechanical adjustments, big aesthetic 
+        modifications and insurance payments.
+\end{itemize}
+
+Each user, acting with a different role, is forced to execute a transaction and to fulfill a contract.
+Since, transaction histories are becoming more transparent and secure through the use of blockchain 
+technology. All network participants share the same information (through blocks) as opposed to 
+individual copies. To modify a single transaction record would require the alteration of all subsequent 
+records and the collusion of the entire network.
+
+
+
+
+\begin{table}[htb]
+\footnotesize
+    \begin{center}
+    \caption{Type of operation grouped by corresponding transactions}
+    \label{table:operations}
+        \begin{tabular}{|l|l|l|l|l|l|}
+        \hline
+        \textbf{Operation}          &\textbf{U}& \textbf{D}&\textbf{O}& \textbf{G}& \textbf{H}\\ \hline\hline
+        Create (genesis block)      &          & X         &          &           &           \\ \hline\hline
+        get information             & X        &           &          &           &           \\ \hline\hline
+        sell                        &          &           & X        &           &           \\ \hline
+        buy                         & X        &           &          &           &           \\ \hline\hline
+        request change legal status &          &           & X        &           &           \\ \hline
+        change legal status         &          &           &          & X         &           \\ \hline\hline
+        request to add information  &          &           & X        &           &           \\ \hline
+        add information             &          &           &          &           & X         \\ \hline
+        authorize add information   &          &           & X        &           &           \\ \hline
+        \end{tabular}
+    \end{center}
+\end{table}

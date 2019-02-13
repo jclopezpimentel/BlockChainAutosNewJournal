@@ -1,0 +1,25 @@
+\begin{table}[htb]
+\footnotesize
+\begin{center}
+\caption{Set Transactions Protocol, authentication required}
+\label{table:ProtSetTrans}
+\begin{tabular}{|l|}
+\hline
+           Initial Knowledge                                                             \\
+            $C:C\lnk \QR \lnk  K_{C\Server} \lnk N_{\Client\Server} \lnk T$               \\
+            $\Server: \Server\lnk K_{C\Server} \lnk N_{\Client\Server}$    \\ \hline \hline 
+           Set a transaction                                                                        \\
+           \hspace{5mm} $t=setTransaction(\QR,T,N_{\Client\Server})$                                  \\  
+           1.-$\Client\rightarrow \Server: \fat{C \lnk t \lnk \fat{t}_{K_{priv(C)}}}_{K_{C\Server}}$          \\ 
+           \hspace{5mm} $b=block(t)$                                  \\  
+           2.-$\Server\rightarrow [\Server_i .. \Server_n]: \fat{C \lnk b \lnk N_\Server}_{K_{\Server_i .. \Server_n}}$          \\ 
+           \hspace{5mm} $b'=mine(b)$                                  \\  
+           3.-$\Server_x\rightarrow [\Server_i .. \Server_n]: \fat{C \lnk b'}_{K_{\Server_i .. \Server_n}}$          \\            
+                                             \\  
+           4.-$\Server_i\rightarrow \Server: \fat{C \lnk b'}_{K_{\Server}}$          \\            
+           \hspace{5mm} $r=f(t)$                                  \\  
+           5.-$\Server\rightarrow \Client: \fat{C \lnk r \lnk N_{\Client\Server}}_{K_{C\Server}}$       \\  \hline \hline
+\end{tabular}
+\end{center}
+\end{table}
+\normalsize

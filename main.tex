@@ -1,0 +1,52 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+\usepackage{graphicx, soul} 
+\usepackage{soul} % soul pachage must be removed when the paper is ready
+\usepackage{colortbl} % Biblioteca para el color
+\usepackage{color} % Biblioteca para el color
+\usepackage{xcolor} % Biblioteca para el color
+
+\usepackage{listings}
+\usepackage{hyperref}
+
+\include{lib/Authentication}
+
+\ifCLASSOPTIONcompsoc
+ \usepackage[nocompress]{cite}
+\else
+  \usepackage{cite}
+\fi
+
+\ifCLASSINFOpdf
+\else
+\fi
+\hyphenation{Blockchain and smart contracts}
+
+\begin{document}
+        \newcommand{\blockchaincarnetwork}{\textit{vehicle blockchain network~}}
+        \newcommand{\duda}[1]{\textcolor{red}{\textit{#1}}}
+
+        \input{sections/header.tex}
+        
+        %\tableofcontents    % this line must be removed
+        
+       % \input{sections/introduction.tex}
+        %\input{sections/fraud.tex}
+        %\input{sections/clients.tex}
+        \input{sections/introduction}
+        \input{sections/secBackground} %added by JC
+        \input{sections/secProposal} %added by JC        
+        \input{sections/clientServerPart} %added by JC        
+        \input{sections/secGetServices} %added by JC  ---
+        \input{sections/secSetTrans} %added by JC  ---
+        %\input{sections/secGetServAuth} %added by JC  ---
+        \input{sections/secSetTransactions} %added by JC  ---
+
+       % \input{sections/relatedwork}
+        
+        \input{sections/conclusion.tex}
+        \input{sections/appendix.tex}
+        \input{sections/thanks.tex}
+        \input{sections/references.tex}
+\end{document}
+
+

@@ -1,0 +1,43 @@
+\subsection{Proposal}
+\label{subsec:proposal}
+In general there exists some characteristics, in the vehicles, we are looking for:
+a) Provenance,
+b) Transparency with respects to purchase sale,
+c) Traceability with history transactions, owners and legal situations (including  
+government participation).
+
+To achieve these goals, we have proposed a distributed model illustrated in the context
+diagram in Figure~\ref{fig:flowChartFramework}. Such a figure denotes
+the general stages (circled numbers) a user must follow to get or set information about a 
+vehicle:
+\begin{figure}[hb]
+ %\begin{center}
+  \centering
+    \includegraphics[scale=0.74]{images/lopez2.png}
+        \caption{Diagram about the use of the framework from the client view}
+    \label{fig:flowChartFramework}
+ % \end{center}
+\end{figure}
+
+\begin{itemize}
+  \item \textbf{Stage I} consists in getting information of a vehicle through reading
+    a QR code by any user.
+    %or setting the QR code by a dealership. 
+    This stage requires that a company generates the genesis block after a vehicle has 
+    been manufactured. Details in Section~\ref{ssec:clientServer}.
+  \item \textbf{Stage II} consists in establishing a secure channel between any user
+    and the \textit{vehicle blockchain network}. We
+    have used the TLS protocol because it is the standard in the
+    e-commerce and it has been subject to a lot of verification proofs.
+    Details in Section~\ref{sec:secureChannel}.
+  \item \textbf{Stage III} consists in getting services such as provenance or 
+    traceability. Some services require authentication, but others do not.
+    Details in Section~\ref{sec:getServices}.  
+  \item \textbf{Stage IV:} consists in how to do transactions and what kind of these can 
+    do each role (owner, government, dealerships, etc). For example how to build
+    the genesis block within the \textit{vehicle blockchain network}. 
+    Authentication is required. 
+    Details in Section~\ref{sec:transactions}. 
+\end{itemize}
+
+\input{sections/notation}

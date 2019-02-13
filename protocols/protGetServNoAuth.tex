@@ -1,0 +1,18 @@
+\begin{table}[htb]
+\footnotesize
+\begin{center}
+\caption{Get Service Protocol, authentication is not required}
+\label{table:ProtGetServicesNoAuth}
+\begin{tabular}{|l|}
+\hline
+           Initial Knowledge                                                             \\
+            $C:C\lnk QR \lnk  K_{C\Server}$                                    \\
+            $\Server: \Server\lnk K_{C\Server}$    \\ \hline \hline 
+           Get a service                                                                        \\
+           1.-$\Client\rightarrow \Server: \fat{C \lnk QR \lnk n}_{K_{C\Server}}$          \\ 
+           \hspace{5mm} $d=getService(QR,n)$                                  \\  
+           2.-$\Server\rightarrow \Client: \fat{C \lnk d}_{K_{C\Server}}$       \\  \hline \hline
+\end{tabular}
+\end{center}
+\end{table}
+\normalsize

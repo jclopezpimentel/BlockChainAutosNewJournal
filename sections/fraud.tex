@@ -1,0 +1,51 @@
+\subsection{Case Study}
+Before 2014 the legal procedure of selling a vehicle in Mexico is described in the following
+work flow:
+\begin{enumerate}
+    \item The buyer might check that no legal problems are involved with the vehicle. 
+          An online check can be done with the plate number. 
+    \item The buyer makes the car payment.
+    \item The seller endorses his bill to the new owner and gives possession of the car 
+    to the buyer.
+    %generates an electronic bill for the value of the car and acknowledges payment from the buyer
+    \item The change of ownership is notified to the city government. In some cities a 
+        change of plates is necessary and a new set of plates is given to the new owner.
+\end{enumerate}
+
+From 2012, Mexico joins the paperless culture in the world,\footnote{The introduction of the Advance
+Electronic Signature published by the Official Journal of the Federation via \url{https://www.dof.gob.mx/nota_detalle.php?codigo=5228864&fecha=11/01/2012}} 
+but from 2014, paper bills stopped being a legal proof of ownership. 
+This led to some problems in the purchase procedure.
+
+Using the electronic bill with the above work flow provides a vulnerability between steps $2$ and $3$. 
+Step $2$ can be generated even without the existence of a physical car. A malicious seller 
+could generate multiple apparently original bills and give to multiple buyers before 
+they realize the car doesn't exist physically. A certain level of \textit{trust} must 
+exist between buyer and seller for the exchange to happen. And this \textit{trust} can be 
+maligned. 
+
+This fraud is specially common on car sales between private owners for a couple reasons. 
+The first one is the high value of this commodity, which makes it a low risks - high stakes 
+trade-off for fraudsters. The other one comes with the definition of car: a portable, efficient, 
+and maneuverable transportation vehicle that can be easily removed from the transaction scene 
+and hidden afterwards.
+
+Due to the lack of immediate retaliation available to the criminal, he has a time frame where 
+the fraud could be repeated multiple times, even if finally, the car exchange takes place with 
+an Innocent buyer afterwards.
+
+Currently, the solution proposed by dealerships have been to sign officially a physical 
+invoice (see Figure~\ref{fig:invoice} for an example) including holograms (left side
+in the figure), a stamp (right side, below of the signature) and a QR code (below on the
+right side). 
+However, it falls back again into a paper culture. We have revised that the case 
+study exposed in this section is also active in several countries.
+\begin{figure}[hbt]
+ %\begin{center}
+  \centering
+    \includegraphics[scale=0.4]{images/lopez1.png}
+        \caption{Formal Invoice including a hologram, a stamp and a signature}
+    \label{fig:invoice}
+ % \end{center}
+\end{figure}
+

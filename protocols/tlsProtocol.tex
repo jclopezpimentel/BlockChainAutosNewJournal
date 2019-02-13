@@ -1,0 +1,29 @@
+\begin{table}[htb]
+\footnotesize
+\begin{center}
+\caption{SSL and TLS Protocol}
+\label{table:sslAndtlsProtocol}
+\begin{tabular}{|l|}
+\hline
+  Initial Knowledge                                                                     \\\hline
+            $C:C\lnk QR$                                                                  \\ 
+            $\Server: K_{pub(S)}\lnk K_{priv(S)} \lnk \Server$                 \\ 
+            $\Servera: \forall K_{pub}\in \Key$                                   \\ \hline 
+  Generating a session secret key                                                          \\
+            1.-$\Client\rightarrow \Server:C\lnk N_{C}\lnk [Lc]$                         \\ 
+            2.-$\Server\rightarrow \Client: f([Lc])\lnk \Server \lnk N_{\Server}\lnk N_{C}\lnk 
+                 K_{pub(\Server)}\lnk S_{ca}\lnk $                                            \\ 
+            \hspace{3mm} $\fat{Hash(\Server\lnk N_{\Server}\lnk N_{C}\lnk K_{pub(\Server)}\lnk 
+                        S_{ca})}_{K_{priv(\Server)}}$                                          \\ 
+            3.-$\Client\rightarrow \Servera:$verification process with $\Servera$             \\ 
+            4.-$\Servera \rightarrow \Client: \Server$ is authenticated                     \\ 
+            5.-$\Client\rightarrow \Server: N_{C}\lnk\fat{C\lnk N_{C'}}_{K_{pub(\Server)}}$      \\ \hline
+  New Knowledge Accumulated                                                               \\
+            $C:C\lnk QR \lnk N_{C}\lnk K_{pub(\Server)}\lnk N_{C'} \lnk $                                    \\
+            \hspace{5mm} $K_{\Client\Server}=Hash(N_{C'},N_{C},N_{\Server})$                              \\ 
+            $\Server: K_{pub(\Server)}\lnk K_{priv(\Server)}\lnk \Server\lnk N_{C}\lnk N_{C'}\lnk$    \\
+            \hspace{5mm} $K_{\Client\Server}=Hash(N_{C'},N_{C},N_{\Server})$                               \\ \hline \hline 
+\end{tabular}
+\end{center}
+\end{table}
+\normalsize

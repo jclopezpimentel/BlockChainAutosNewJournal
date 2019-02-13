@@ -1,0 +1,150 @@
+\section{Transactions}
+\label{sec:transactions}
+A transaction is an exchange or transfer of goods, services, or funds where it can involve 
+two parties or things that reciprocally affect or influence each other. 
+As shown in Table~\ref{table:operations} the operations are involved in at least two parts (\textit{sell} and \textit{buy}, for instance). These parts are different roles that a client can 
+acts at different moments.
+
+
+
+\input{sections/roles} %added by JC
+
+
+\subsection{Set Transactions} 
+\label{ssec:setTrans}
+As shown by Table~\ref{table:ProtSetTrans} the participants in a transaction 
+are a client (acting any role, sometimes like \textbf{O}wner or \textbf{D}ealership, etc) and a miner.
+The client knows the $QR$ code through a scan process with
+a car; a secret shared key $K_{\Client\Server}$ established with
+a miner in the secure channel process; a proof to have been authenticated
+with the miner $N_{\Client\Server}$; and the transaction $T$ that client wish 
+to do  (see Table~\ref{table:operations} for types of operations). 
+The miner obviously knows also $K_{\Client\Server}$ and $N_{\Client\Server}$. 
+\begin{enumerate}
+    \item The protocol starts when the client $\Client$ builds the transaction 
+        data $t$, the signature of the transaction $\fat{t}_{K_{priv(C)}}$ and sends
+        all to the miner $\Server$; all ciphered with the 
+        session key $K_{\Client\Server}$. 
+    \item Having the miner accepted the previous message (verifying the  
+        session with $N_{\Client\Server}$ and all received messages), he proceeds to build 
+        the block $b$ and broadcasts it to all miners $\Server\rightarrow [\Server_i .. \Server_n]$
+        in order to execute a mining process within the \blockchaincarnetwork.
+        See Section~\ref{subsec:blocks} for example of blocks and transactions.
+
+%        \begin{tabular}{lll}
+%                &               & \\ 
+%            \{  &               &    \\
+%                & dataTran:     & t,  \\
+%                & previousHash: & "000dc75a3...7cf", \\
+%                & hash:         & "000d20368...1b8",\\
+%                & blockId:      & 1,\\
+%                & nonce:        & "4254352343223344",\\
+%                & timestamp:    & "18/09/2018 9:40:44am" \\
+%            \}  &               &   \\
+%        \end{tabular}
+        
+    \item The miner solving the challenge $\Server_x$, returns again the block, $b'$, 
+        but now it is mined. 
+    \item Within the \blockchaincarnetwork there exists a parity node\footnote{
+            A parity node is a miner that is close with another and they have usual
+            peer to peer communication.
+        } to the miner $\Server$
+        who also accepts the new block $b'$.
+    \item Finally, the miner responds $r$ to the client as a proof that the transaction 
+        was carried out successfully.
+\end{enumerate}
+
+\input{protocols/protSetTransactions.tex}
+
+\subsection{Blocks}
+\label{subsec:blocks}
+According to Table~\ref{table:operations} there exists nine operations that users can
+execute depending of the type of role they are performance. Independently, the block $b$ 
+is compound as follows:
+\begin{eqnarray}
+            b               & \Def  & \textit{body} :: \textit{hB}
+    \label{eq:block}
+\end{eqnarray}
+Let start with \textit{hB}, which is the \textit{body} being hashed:
+\begin{eqnarray}
+    \textit{hB}   & \Def  & \{ rootHash:  Hash(\textit{body})  \} 
+    \label{eq:hashBlock}
+\end{eqnarray}
+%\textit{body} is compound as follows:
+\begin{eqnarray}
+            \textit{body}   & \Def  & \{  \textit{GenesisInfo}\} :: \{ \textit{GralBlockInfo} \}  \\ \nonumber 
+                            &       & :: \{ \textit{TranInfo} \} 
+    \label{eq:body}
+\end{eqnarray}
+
+\textit{GenesisInfo} is the JSON shown in Table~\ref{table:genesisInfo} that 
+includes the following attributes: \textit{id}, \textit{tradeMark}, \textit{model}, \textit{class}, 
+\textit{version} and \textit{cylinders}, among others; these are built only the first time when 
+a vehicle is manufactured.
+
+Next subsections we explain how \textit{GralBlockInfo} and \textit{TranInfo} are established.
+
+\subsubsection{General Block Information}
+\textit{GralBlockInfo} is shown in the following table:
+
+\begin{table}[ht]
+    \centering
+    \caption{General Block Information}
+        \begin{tabular}{lll}
+            \{  &               &    \\
+                & \textit{timestamp}:    & $T_c$, \\
+                & \textit{nonce}:        & $N_{\Client\Server}$, \\
+                & \textit{miner}:        & $Hash(\Server)$, \\
+                & \textit{gas}:          & $\$_1$        \\
+                & \textit{prevHash}:     & 0 \\
+                & \textit{rootHash}:     & $Hash(b)$ \\
+            \}  &               &   \\
+        \end{tabular}
+    \label{table:generalBlockInfo}
+\end{table}
+
+Attribute \textit{timestamp} is used to identify when the block is created; 
+\textit{nonce}$:N_{\Client\Server}$ used to distinguish the session; 
+\textit{miner} is hashed to identify the participant miner in the current 
+transaction;
+\textit{gas} is the cost $\$_1$ of the transaction;
+\textit{prevHash} specifies the previous hashed block, in this case, it is 0 
+when represents the genesis block.
+
+\subsubsection{Transaction part}
+Table~\ref{table:TranBlockInfo} shows \textit{TranInfo}, attribute \textit{pubKey} 
+is the public key of the next owner $N$; 
+\textit{client} is a hashed data used to identify the participant client in the current 
+transaction (sometimes might be \textbf{O}wner, another the \textbf{D}ealership, etc); 
+\textit{type} in order to know the type of operation ("genesis", "sell", "buy", etc., see Table~\ref{table:operations}); 
+\textit{sign} to specify a sign of the block by client; and 
+\textit{operation} states a one way function that the block is able to execute (smart contract like Ethereum). 
+\begin{table}[ht]
+    \centering
+    \caption{Transaction Information}
+        \begin{tabular}{lll}
+            \{  &               &    \\
+                & \textit{pubKey}:       & $K_{pub(N)}$, \\
+                & \textit{client}:       & $Hash(\Client)$, \\
+                & \textit{type}:         & "operation", \\
+                & \textit{sign}:         & $Hash(\fat{\textit{body}}_{priv(\Client)})$ \\
+                & \textit{operation}:    & "f(x)", \\
+            \}  &               &   \\
+        \end{tabular}
+    \label{table:TranBlockInfo}
+\end{table}
+
+For example, in order to form a genesis block the attribute \textit{pubKey} would be the 
+public key $K_{pub(D)}$ of the \textbf{D}ealership, being 
+the next owner; 
+\textit{client} would be $Hash(D)$, the \textbf{D}ealership hashed; 
+\textit{type} would be "genesis"; and in this case a 
+smart \textit{operation} could be $setOwner(D)$ establishing a property to know who is the
+owner of the vehicle.
+
+Another example is a sale of a vehicle, in this case, the \textit{pubKey} 
+would be $K_{pub(U)}$, the public key of the \textbf{U}ser, being the next owner; 
+\textit{client} would be the current \textbf{O}wner; 
+\textit{type} would be "sell"; 
+and the smart \textit{operation} would be $setSale(\textit{gasS}, U)$, being a smart operation
+stating the vehicle's price of sale $gasS$ and the possible new owner $U$.

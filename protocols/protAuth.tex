@@ -1,0 +1,28 @@
+\begin{table}[htb]
+\footnotesize
+\begin{center}
+\caption{Authentication Protocol}
+\label{table:AuthProtocol}
+\begin{tabular}{|l|l|l|}
+\hline
+{\bf Process}                                                                     \\\hline\hline
+            Initial Knowledge                                                     \\
+            $\Client:P\lnk X \lnk K_{\Client\Server}$                               \\
+            \hspace{5mm}                                                 \\ 
+            $\Server: K_{pub(\Client)}\lnk Hash(P,X)\lnk X \lnk[@::Pd] \lnk K_{\Client\Server}$ \\\hline \hline
+            Authentication                                                         \\
+            1.-$\Client\rightarrow \Server: \fat{\Server \lnk @ \lnk N_{\Client} \lnk 
+                                              Hash(@\lnk \Client \lnk \Server \lnk N_\Client)}_{K_{\Client\Server}}$  \\ 
+            2.-$\Server\rightarrow \Client: \fat{\Client \lnk hash(N_{\Client},X)}_{K_{\Client\Server}}$ \\ 
+            \hspace{5mm} $Y=hash(N_{\Client},hash(P,X))$                          \\              
+            3.-$\Client\rightarrow \Server: \fat{@\lnk N_{\Client}\lnk Y}_{K_{\Client\Server}}$            \\ \hline  \hline
+            New Knowledge Accumulated                                               \\
+            $\Client: \Server \lnk N_\Client \lnk Y$         \\
+            \hspace{5mm}                \\ 
+            $\Server: \Client  \lnk N_\Client \lnk Y$          \\ 
+            \hspace{5mm}                             \\ \hline \hline
+\end{tabular}
+\end{center}
+\end{table}
+\normalsize
+

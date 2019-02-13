@@ -1,0 +1,20 @@
+\section{Client roles}
+
+According to the permissions the clients should have, there will be three defined roles for them:
+
+\begin{enumerate}
+    \item Querier
+    \item Owner
+    \item Helper
+    \item Law enforcer
+\end{enumerate}
+
+The querier will have permissions sufficient to interact with the system in order to query and obtain information on the vehicle. This permissions will be granted to the querier once the client is able to establish a secure channel.
+
+Every car will have one and only one owner at a given time. The owner will be the only client that has permission to trade ownership. 
+
+
+The helper role is a client who receives a temporal permission from the owner to set one transaction on the block-chain. The time frame for the temporal permission will be allotted by the owner of the car. The car owner will set a special transaction to give the helper the permission. 
+The helper role will be used for transactions that change the value of the property. This will include official services, mechanical adjustments, big aesthetic modifications and insurance payments.
+
+The law enforce roles will have the ability to change the value of the car when the vehicle is involved in legal situations. It won’t need the permission of the owner to modify the status.
