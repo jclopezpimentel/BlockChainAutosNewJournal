@@ -10,21 +10,22 @@
 %$C:N_{C}\lnk K_{pub(S)}\lnk N'_{C} \lnk K'_{CS}$                              \\
 %$\ServerW: K_{pub(S)}\lnk K_{priv(S)}\lnk \ServerW\lnk N_{C}\lnk N_{C'}\lnk 
 %                      K'_{CS}$                                                \\ \hline \hline
-Initial Knowledge                                                             \\
-$\Client:K_{C\ServerW}\lnk [@::Pd]$                                                    \\
-$\ServerW: K_{C\ServerW}$                                                            \\ \hline \hline
-1.-$\Client\rightarrow \ServerW:\fat{[@::Pd]}_{K_{\Client\ServerW}}$                     \\
+\textbf{Initial Knowledge}                                                        \\
+$\Client:K_{\client\serverW}\lnk [@::Pd]$                                                    \\
+$\ServerW: K_{\client\serverW}$                                                            \\ \hline \hline
+1.-$\Client\rightarrow \ServerW:\fat{[@::Pd]}_{K_{\client\serverW}}$                     \\
 \hspace{5mm} $X=f(Pd) $                           \\ 
-2.-$\ServerW\rightarrow \Client_e: \fat{@\lnk Pd \lnk X}_{K_{\Client_e\ServerW}} $                  \\ 
+2.-$\ServerW\rightarrow \Client_e: \fat{@\lnk Pd \lnk X}_{K_{\client_e\serverW}} $                  \\ 
 \hspace{5mm} $\Client$ generates password $P$                          \\  
-3.-$\Client\rightarrow \ServerW:\fat{@\lnk Hash(P,X)}_{K_{\Client\ServerW}}$                 \\  
+3.-$\Client\rightarrow \ServerW:\fat{@\lnk Hash(P,X)}_{K_{\client\serverW}}$                 \\  
 \hspace{5mm} $\ServerW$ generates a pair key ($K_{pub(\Client)}$ and $K_{priv(\Client)}$)\\
 \hspace{5mm} $\ServerW$ generates a block $bp = blockPubKey(K_{pub(\Client)})$\\
 4.-$\ServerW\rightarrow [\Server_i .. \Server_n]: \fat{\ServerW \lnk bp}_{K_{\Server_i .. \Server_n}}$  \\  
-5.-$\ServerW\rightarrow \Client: \fat{C \lnk K_{pub(\Client)}\lnk K_{priv(\Client)}}_{K_{\Server}}$          \\            \hline
-New Knowledge Accumulated                                                     \\
-$\Client:P\lnk X \lnk K_{pub(\Client)}\lnk K_{priv(\Client)}$                                                                \\
-$\ServerW: K_{pub(\Client)}\lnk K_{priv(\Client)}\lnk X \lnk Hash(P,X)\lnk [@::Pd]$       \\\hline \hline 
+5.-$\ServerW\rightarrow \Client: \fat{C \lnk K_{pub(\Client)}\lnk K_{priv(\Client)}}_{K_{\client\serverW}}$          \\\\            \hline
+\textbf{Security Properties}                        \\
+\hspace{5mm}Secrecy of $P$ known by $[\Client]$ \\
+\hspace{5mm}Secrecy of $K_{pub(\Client)}$ known by $[\Client,\ServerW]$ \\
+\hspace{5mm}Secrecy of $K_{priv(\Client)}$ known by $[\Client,\ServerW]$ \\\hline \hline 
 \end{tabular}
 \end{center}
 \end{table}

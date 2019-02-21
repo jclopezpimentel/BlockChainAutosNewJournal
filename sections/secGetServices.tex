@@ -83,18 +83,17 @@ we achieve by mean a \textit{registration process}.
 \subsubsection{Registration with the Blockchain vehicle wallet}
 \label{sec:Registration}
 
-This part consists in to establish a \textit{username} and a \textit{password}, which
-will be mapped with an identity. The \textit{username} must be a valid email and the 
-\textit{password} will be created by the user.
+This part consists in to establish a \textit{username} and a \textit{password}, which will be mapped with an identity. 
+The \textit{username} must be a valid email; and the \textit{password} will be created by the user, and not must be sent through the network. 
+Table~\ref{table:reqSessKey} summarizes the protocol, described as follows: 
 
-Table~\ref{table:reqSessKey} summarizes the protocol
-in Alice\&Bob notation, its description is as follows: 
 \begin{itemize}
   \item Firstly, the user must establish a secure channel with the miner-vehicle-wallet\footnote{
-    We will use server-wallet to abbreviate miner-vehicle-wallet.},
-    $K_{C\ServerW}$,
+        We will use server-wallet to abbreviate miner-vehicle-wallet.},
+    $K_{\client\serverW}$,
     (see Section~\ref{sec:secureChannel}). In this step all exchanged messages are ciphered 
-    using the symmetric key $K_{C\ServerW}$, which was obtained during the TLS protocol. 
+    using the symmetric key $K_{C\serverW}$, which was obtained during the TLS protocol.
+    Hence, $K_{C\serverW}$ appears in the initial knowledge of the protocol.
   \item Secondly, the user must generate his key pair (public and private) through
     his username and password executing the following steps:
     \begin{itemize}
@@ -112,6 +111,8 @@ in Alice\&Bob notation, its description is as follows:
     \item \textbf{Fifth step:} After the mining process, the miner-wallet provides to the $\Client$ the 
         public and private key; which will be used to do transactions. 
     \end{itemize}
+  \item We have verified this protocol using The AVISPA-SPAN Tool, available via http://www.avispa-project.org/ finding the secrecy property:
+        the password $P$ to be known only by $C$; $K_{pub(\Client)}$ and $K_{priv(\Client)}$ to be known only by $\Server$ and $\client$.
 \end{itemize}
 Note that, any user could transact a lot of accounts with the miner-wallet, but each of their 
 vehicle-wallet would be empty.
@@ -119,27 +120,6 @@ vehicle-wallet would be empty.
 \input{protocols/protReqPass}
 
 
-The security properties the protocol must provides are: $P$ to be
-known only by $C$; $K_{pub(\Client)}$ and $K_{priv(\Client)}$ to be known by $\Server$; 
-and obtain strong authentication between the participants.
-
-% We have verified this protocol using The AVISPA Tool Web
-% Interface, available via http://www.avispa-project.org/
-% finding the following:
-% \begin{itemize}
-%     \item The protocol provides secrecy.
-%     \item We have proved that the protocol provides
-%       \emph{authentication} from the client to the server on message 
-%       $f(Pd)$ and \emph{weak authentication} from the server to the
-%       client on message $Hash(P)$.
-%     \item When we proved \emph{strong authentication}, it failed due
-%       to the lack of freshness property generating The Dolev and Yao
-%       attacker (of AVISPA tool) a replay attack. However, this attack
-%       is already not possible when we consider that $K'_{CS}$ is
-%       fresh, which was obtained in an immediately previous step. Even
-%       though, we could include timestamps in all steps, however, that
-%       is not necessary. 
-% \end{itemize}
 
 \subsubsection{Client-Miner Authentication}
 \label{ssec:SecAuth}
@@ -164,24 +144,23 @@ describes the authentication part and the explanation is as follows:
     of previous steps. It is considered to have established a secure tunneling 
     with the miner using the TLS protocol and to have obtained the register
     procedure. So, the initial knowledge of the client consists in to know 
-    the session key $K_{\Client\Server}$, his password $P$ and the secret $X$. 
+    the session key $K_{\client\serverW}$, his password $P$ and the secret $X$. 
     On the other hand, the miner knows the same session key, the client public and
     private key, personal information of the client, secret $X$ and the hashed 
     $Hash(P,X)$. The following steps are proposed:
     \begin{itemize}
     \item \textbf{First step:} the client sends a challenge to the
-      miner $N_\Client$. The miner can map $@$ with $\Client$ and build $hash(@\lnk\Client\Server\lnk N_\Client)$. This message is ciphered with $K_{\Client\Server}$ because the session key has been destined for them. 
+      miner $N_\client$. The miner can map $@$ with $\Client$ and build $hash(@\lnk\Client\lnk\Server\lnk N_\client)$. This message is ciphered with $K_{\client\serverW}$ because the session key has been destined for them. 
     \item \textbf{Second step:} the server responds to the client with a new challenge,
       firstly includes the client name $C$ (which is mapped with $@$) and a hashed message
-      $Y$ composed by $N_{\Client}$ and $X$ both messages must be known by the client. Again,
-      all ciphered with $K_{\Client\Server}$.
+      $Y$ composed by $N_{\client}$ and $X$ both messages must be known by the client. Again,
+      all ciphered with $K_{\client\serverW}$.
     \item \textbf{Third step:} Once the client has accepted the previous step, it means that
       he has deduced all previous messages and he has authenticated to the miner, so, the 
-      client sends back his username $@$, the challenge response $N_\Client$ as a freshness
-      property and his password concatenated with $P$, $X$ and $N_{\Client}$.
+      client sends back his username $@$, the challenge response $N_\client$ as a freshness
+      property and his password concatenated with $P$, $X$ and $N_{\client}$.
   \end{itemize}
-\item Finally, after having run the protocol it is expected to obtain strong authentication
-    between the client and the miner. 
+\item Finally, after having verified the protocol with AVISPA-SPAN tool, we found a strong authentication property: the protocol provides \emph{authentication} from the client to the Miner on message $N_c$ and the inverse (Miner to Client) on message $@$. 
 \end{itemize}
  
 \input{protocols/protAuth}

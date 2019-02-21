@@ -6,19 +6,19 @@
 \begin{tabular}{|l|}
 \hline
            Initial Knowledge                                                             \\
-            $C:C\lnk \QR \lnk  K_{C\Server} \lnk N_{\Client\Server} \lnk T$               \\
-            $\Server: \Server\lnk K_{C\Server} \lnk N_{\Client\Server}$    \\ \hline \hline 
+            $C:C\lnk \QR \lnk  K_{\client\serverW} \lnk N_{\client\serverW} \lnk T$               \\
+            $\Server: \Server\lnk K_{\client\serverW} \lnk N_{\client\serverW}$    \\ \hline \hline 
            Set a transaction                                                                        \\
-           \hspace{5mm} $t=setTransaction(\QR,T,N_{\Client\Server})$                                  \\  
-           1.-$\Client\rightarrow \Server: \fat{C \lnk t \lnk \fat{t}_{K_{priv(C)}}}_{K_{C\Server}}$          \\ 
+           \hspace{5mm} $t=setTransaction(\QR,T,N_{\client\serverW})$                                  \\  
+           1.-$\Client\rightarrow \Server: \fat{C \lnk t \lnk \fat{t}_{K_{priv(C)}}}_{K_{\client\serverW}}$          \\ 
            \hspace{5mm} $b=block(t)$                                  \\  
-           2.-$\Server\rightarrow [\Server_i .. \Server_n]: \fat{C \lnk b \lnk N_\Server}_{K_{\Server_i .. \Server_n}}$          \\ 
+           2.-$\Server\rightarrow [\Server_i .. \Server_n]: \fat{C \lnk b \lnk N_\serverW}_{K_{\serverW_i .. \serverW_n}}$          \\ 
            \hspace{5mm} $b'=mine(b)$                                  \\  
-           3.-$\Server_x\rightarrow [\Server_i .. \Server_n]: \fat{C \lnk b'}_{K_{\Server_i .. \Server_n}}$          \\            
+           3.-$\Server_x\rightarrow [\Server_i .. \Server_n]: \fat{C \lnk b'}_{K_{\serverW_i .. \serverW_n}}$          \\            
                                              \\  
-           4.-$\Server_i\rightarrow \Server: \fat{C \lnk b'}_{K_{\Server}}$          \\            
+           4.-$\Server_i\rightarrow \Server: \fat{C \lnk b'}_{K_{\serverW}}$          \\            
            \hspace{5mm} $r=f(t)$                                  \\  
-           5.-$\Server\rightarrow \Client: \fat{C \lnk r \lnk N_{\Client\Server}}_{K_{C\Server}}$       \\  \hline \hline
+           5.-$\Server\rightarrow \Client: \fat{C \lnk r \lnk N_{\Client\Server}}_{K_{\client\serverW}}$       \\  \hline \hline
 \end{tabular}
 \end{center}
 \end{table}

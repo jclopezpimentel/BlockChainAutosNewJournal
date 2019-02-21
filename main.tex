@@ -1,4 +1,57 @@
-\documentclass[10pt,journal,compsoc]{IEEEtran}
+%% 
+%% Copyright 2007-2019 Elsevier Ltd
+%% 
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%% 
+
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%% SP 2008/03/01
+%%
+%% 
+%%
+%% $Id: elsarticle-template-num.tex 164 2019-01-14 09:57:55Z rishi $
+%%
+%%
+\documentclass[preprint,12pt]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+%% \usepackage{lineno}
+
 \usepackage{graphicx, soul} 
 \usepackage{soul} % soul pachage must be removed when the paper is ready
 \usepackage{colortbl} % Biblioteca para el color
@@ -10,20 +63,18 @@
 
 \include{lib/Authentication}
 
-\ifCLASSOPTIONcompsoc
- \usepackage[nocompress]{cite}
-\else
-  \usepackage{cite}
-\fi
-
-\ifCLASSINFOpdf
-\else
-\fi
 \hyphenation{Blockchain and smart contracts}
 
+
+\journal{Computer Networks}
+
 \begin{document}
-        \newcommand{\blockchaincarnetwork}{\textit{vehicle blockchain network~}}
+
+  \newcommand{\blockchaincarnetwork}{\textit{vehicle blockchain network~}}
         \newcommand{\duda}[1]{\textcolor{red}{\textit{#1}}}
+
+
+
 
         \input{sections/header.tex}
         
@@ -43,10 +94,37 @@
 
        % \input{sections/relatedwork}
         
-        \input{sections/conclusion.tex}
-        \input{sections/appendix.tex}
-        \input{sections/thanks.tex}
-        \input{sections/references.tex}
+        \input{sections/conclusion}
+        %\input{sections/appendix.tex}
+        %\input{sections/thanks.tex}
+        %\input{sections/references.tex}
+
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+%% \section{}
+%% \label{}
+
+%% If you have bibdatabase file and want bibtex to generate the
+%% bibitems, please use
+%%
+\bibliographystyle{elsarticle-num} 
+\bibliography{bib/paper}
+
+%% else use the following coding to input the bibitems directly in the
+%% TeX file.
+
+%\begin{thebibliography}{00}
+
+%% \bibitem{label}
+%% Text of bibliographic item
+
+%\bibitem{}
+
+%\end{thebibliography}
 \end{document}
-
-
+%\endinput
+%%
+%% End of file `elsarticle-template-num.tex'.
