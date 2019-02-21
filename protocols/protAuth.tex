@@ -11,13 +11,13 @@
             \hspace{5mm}                                                 \\ 
             $\Server:Hash(P,X)\lnk X \lnk[@::Pd] \lnk K_{\client\serverW}$ \\\hline \hline
             Authentication                                                         \\
-            1.-$\Client\rightarrow \Server: \fat{\Server \lnk @ \lnk N_{\Client} \lnk 
-                                              Hash(@\lnk \Client \lnk \Server \lnk N_\Client)}_{K_{\client\serverW}}$  \\ 
-            2.-$\Server\rightarrow \Client: \fat{\Client \lnk Hash(N_{\Client},X)}_{K_{\client\serverW}}$ \\ 
-            \hspace{5mm} $Y=hash(N_{\Client},hash(P,X))$                          \\              
-            3.-$\Client\rightarrow \Server: \fat{@\lnk N_{\Client}\lnk Y}_{K_{\client\serverW}}$            \\ \\ \hline  \hline
+            1.-$\Client\rightarrow \Server: \fat{\Server \lnk @ \lnk N_{\client} \lnk 
+                                              Hash(@\lnk \Client \lnk \Server \lnk N_\client)}_{K_{\client\serverW}}$  \\ 
+            2.-$\Server\rightarrow \Client: \fat{\Client \lnk Hash(N_{\client},X)}_{K_{\client\serverW}}$ \\ 
+            \hspace{5mm} $Y=hash(N_{\client},hash(P,X))$                          \\              
+            3.-$\Client\rightarrow \Server: \fat{@\lnk N_{\client}\lnk Y}_{K_{\client\serverW}}$            \\ \\ \hline  \hline
             \textbf{Security Properties}                        \\
-            \hspace{5mm} $\Client$ authenticates $\Server$ on $N_{\Client}$        \\
+            \hspace{5mm} $\Client$ authenticates $\Server$ on $N_{\client}$        \\
             \hspace{5mm} $\Server$ authenticates $\Client$ on $Y$  \\ 
             \hspace{5mm} Secrecy of $P$ known by $[\Client]$ \\\hline \hline
 \end{tabular}

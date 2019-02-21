@@ -15,18 +15,18 @@ acts at different moments.
 As shown by Table~\ref{table:ProtSetTrans} the participants in a transaction 
 are a client (acting any role, sometimes like \textbf{O}wner or \textbf{D}ealership, etc) and a miner.
 The client knows the $QR$ code through a scan process with
-a car; a secret shared key $K_{\Client\Server}$ established with
+a car; a secret shared key $K_{\client\serverW}$ established with
 a miner in the secure channel process; a proof to have been authenticated
-with the miner $N_{\Client\Server}$; and the transaction $T$ that client wish 
+with the miner $N_{\client\serverW}$; and the transaction $T$ that client wish 
 to do  (see Table~\ref{table:operations} for types of operations). 
-The miner obviously knows also $K_{\Client\Server}$ and $N_{\Client\Server}$. 
+The miner obviously knows also $K_{\client\serverW}$ and $N_{\client\serverW}$. 
 \begin{enumerate}
-    \item The protocol starts when the client $\Client$ builds the transaction 
-        data $t$, the signature of the transaction $\fat{t}_{K_{priv(C)}}$ and sends
+    \item The protocol starts when the client $\client$ builds the transaction 
+        data $t$, the signature of the transaction $\fat{t}_{K_{priv(\client)}}$ and sends
         all to the miner $\Server$; all ciphered with the 
-        session key $K_{\Client\Server}$. 
+        session key $K_{\client\serverW}$. 
     \item Having the miner accepted the previous message (verifying the  
-        session with $N_{\Client\Server}$ and all received messages), he proceeds to build 
+        session with $N_{\client\serverW}$ and all received messages), he proceeds to build 
         the block $b$ and broadcasts it to all miners $\Server\rightarrow [\Server_i .. \Server_n]$
         in order to execute a mining process within the \blockchaincarnetwork.
         See Section~\ref{subsec:blocks} for example of blocks and transactions.
@@ -93,7 +93,7 @@ Next subsections we explain how \textit{GralBlockInfo} and \textit{TranInfo} are
         \begin{tabular}{lll}
             \{  &               &    \\
                 & \textit{timestamp}:    & $T_c$, \\
-                & \textit{nonce}:        & $N_{\Client\Server}$, \\
+                & \textit{nonce}:        & $N_{\client\serverW}$, \\
                 & \textit{miner}:        & $Hash(\Server)$, \\
                 & \textit{gas}:          & $\$_1$        \\
                 & \textit{prevHash}:     & 0 \\
@@ -127,7 +127,7 @@ transaction (sometimes might be \textbf{O}wner, another the \textbf{D}ealership,
                 & \textit{pubKey}:       & $K_{pub(N)}$, \\
                 & \textit{client}:       & $Hash(\Client)$, \\
                 & \textit{type}:         & "operation", \\
-                & \textit{sign}:         & $Hash(\fat{\textit{body}}_{priv(\Client)})$ \\
+                & \textit{sign}:         & $Hash(\fat{\textit{body}}_{Kpriv(\client)})$ \\
                 & \textit{operation}:    & "f(x)", \\
             \}  &               &   \\
         \end{tabular}

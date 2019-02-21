@@ -58,12 +58,12 @@ the explanation is as follows:
     (described in Section~\ref{sec:secureChannel}).
    \item The request of a service consists in sending an identity $C$, the data of the $QR$ code, and a 
         number $n$ denoting the number of service that is requested to be consumed. 
-        The client ciphers  these messages using the secret key $K_{C\Server}$ obtained in
+        The client ciphers  these messages using the secret key $K_{\client\serverW}$ obtained in
         the secure channel stage. 
         %(see Section~\ref{sec:secureChannel}).
    \item The miner $\Server$ (having a copy of all blockchains within the \blockchaincarnetwork) verifies 
         if such a service can be consumed (according permissions) and then, 
-        returns the answer $d$; ciphered using, again, the shared secret key $K_{C\Server}$. Finally,
+        returns the answer $d$; ciphered using, again, the shared secret key $K_{\client\serverW}$. Finally,
         $C$ decodes the message and shows the information $d$ to the user.
 \end{itemize}
 
@@ -105,14 +105,14 @@ Table~\ref{table:reqSessKey} summarizes the protocol, described as follows:
       only the hash is sent, $Hash(P,X)$.  Sending $Hash(P,X)$, we can
       ensure that $P$ will be only known by $\Client$.
     \item \textbf{Fourth step:} the miner-wallet creates a public and private key for the client 
-        ($K_{pub(\Client)}$ and $K_{priv(\Client)}$), which the system maps with the client and 
+        ($K_{pub(\client)}$ and $K_{priv(\client)}$), which the system maps with the client and 
         the hashed password; builds a block $bp$ containing the public key of the client and broadcasts
         it to the \blockchaincarnetwork to do the mining process. 
     \item \textbf{Fifth step:} After the mining process, the miner-wallet provides to the $\Client$ the 
         public and private key; which will be used to do transactions. 
     \end{itemize}
   \item We have verified this protocol using The AVISPA-SPAN Tool, available via http://www.avispa-project.org/ finding the secrecy property:
-        the password $P$ to be known only by $C$; $K_{pub(\Client)}$ and $K_{priv(\Client)}$ to be known only by $\Server$ and $\client$.
+        the password $P$ to be known only by $C$; $K_{pub(\client)}$ and $K_{priv(\client)}$ to be known only by $\Server$ and $\client$.
 \end{itemize}
 Note that, any user could transact a lot of accounts with the miner-wallet, but each of their 
 vehicle-wallet would be empty.

@@ -18,10 +18,10 @@ $\ServerW: K_{\client\serverW}$                                                 
 2.-$\ServerW\rightarrow \Client_e: \fat{@\lnk Pd \lnk X}_{K_{\client_e\serverW}} $                  \\ 
 \hspace{5mm} $\Client$ generates password $P$                          \\  
 3.-$\Client\rightarrow \ServerW:\fat{@\lnk Hash(P,X)}_{K_{\client\serverW}}$                 \\  
-\hspace{5mm} $\ServerW$ generates a pair key ($K_{pub(\Client)}$ and $K_{priv(\Client)}$)\\
-\hspace{5mm} $\ServerW$ generates a block $bp = blockPubKey(K_{pub(\Client)})$\\
+\hspace{5mm} $\ServerW$ generates a pair key ($K_{pub(\client)}$ and $K_{priv(\client)}$)\\
+\hspace{5mm} $\ServerW$ generates a block $bp = blockPubKey(K_{pub(\client)})$\\
 4.-$\ServerW\rightarrow [\Server_i .. \Server_n]: \fat{\ServerW \lnk bp}_{K_{\Server_i .. \Server_n}}$  \\  
-5.-$\ServerW\rightarrow \Client: \fat{C \lnk K_{pub(\Client)}\lnk K_{priv(\Client)}}_{K_{\client\serverW}}$          \\\\            \hline
+5.-$\ServerW\rightarrow \Client: \fat{C \lnk K_{pub(\client)}\lnk K_{priv(\client)}}_{K_{\client\serverW}}$          \\\\            \hline
 \textbf{Security Properties}                        \\
 \hspace{5mm}Secrecy of $P$ known by $[\Client]$ \\
 \hspace{5mm}Secrecy of $K_{pub(\Client)}$ known by $[\Client,\ServerW]$ \\
