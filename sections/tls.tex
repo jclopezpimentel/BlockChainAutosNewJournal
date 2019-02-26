@@ -52,8 +52,10 @@ notation, it has been adapted from \cite{lopez13} and its explanation is as foll
     \end{itemize}
 \item Finally, from the nonce numbers $N_{\client}$, $N_{\client'}$ and $N_{\serverW}$
     the session key, $K_{\client\serverW}$, is generated and will be used  in the 
-    following transactions for encryption and decryption operations. This new
-    knowledge will be used in the following stages.  
+    following transactions for encryption and decryption operations.   
+    In the TLS protocol only the server is authenticated ($\Client$ \textit{authenticates} $\Server$ on $K_{\Client\Server}$), but not vice-versa.
+    The new session key generated between $\Client$ and $\Server$ is kept in secret, but $\Server$ cannot be safe about $\Client$ identity.
+    Hence, an authentication step is required, see Section~\ref{ssec:SecAuth}.
 \end{itemize}
 
 

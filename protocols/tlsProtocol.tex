@@ -22,7 +22,12 @@
             $C:C\lnk QR \lnk N_{C}\lnk K_{pub(\serverW)}\lnk N_{C'} \lnk $                                    \\
             \hspace{5mm} $K_{\client\serverW}=Hash(N_{C'},N_{C},N_{\serverW})$                              \\ 
             $\Server: K_{pub(\serverW)}\lnk K_{priv(\serverW)}\lnk \Server\lnk N_{C}\lnk N_{C'}\lnk$    \\
-            \hspace{5mm} $K_{\client\serverW}=Hash(N_{C'},N_{C},N_{\serverW})$                               \\ \hline \hline 
+            \hspace{5mm} $K_{\client\serverW}=Hash(N_{C'},N_{C},N_{\serverW})$                               \\ \hline
+            \textbf{Security Properties}                        \\
+            \hspace{5mm}Secrecy of $K_{\client\serverW}$ known by $[\Client,\Server]$ \\
+            \hspace{5mm} $\Client$ authenticates $\Server$ on $K_{\client\serverW}$        \\
+            \hline \hline            
+            \hline 
 \end{tabular}
 \end{center}
 \end{table}
